@@ -1,1 +1,22 @@
-= ia-artikel-folge-2
+image:https://www.informatik-aktuell.de/fileadmin/templates/wr/images/140x324-Logo-Informatik-Aktuell.png[]
+
+= Docs-as-Code Folge 2
+:author: Dr. Gernot Starke
+:author: Ralf D. Müller
+Die Werkzeuge
+
+Dies ist das Git-Repository zur zweiten Folge der Docs-as-Code Artikelserie in der Informatik Aktuell.
+
+Um mit dem Repository zu experimentieren, müssen Sie es zuerst clonen
+
+    git clone https://github.com/docToolchain/ia-artikel-folge-2
+
+Alternativ können Sie das Repository auch in gitpod.io öffnen, dann startet eine web basierte Entwicklungsumgebung:
+
+image:https://gitpod.io/button/open-in-gitpod.svg[link="https://gitpod.io#https://github.com/docToolchain/ia-artikel-folge-2", title="In Gitpod öffnen"]
+
+Anschliessend lassen Sie sich mit
+
+    ./gradlew tasks
+
+die Liste aller verfügbaren Gradle-Tasks anzeigen.

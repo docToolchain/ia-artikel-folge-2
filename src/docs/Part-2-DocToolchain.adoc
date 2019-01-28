@@ -1,0 +1,69 @@
+include::config.adoc[]
+
+== Docs-As-Code - Die Werkzeuge
+
+In der letzten Folge unseres Artikels haben wir Ihnen den Docs-as-Code Ansatz erklärt und das Wichtigste Werkzeug näher gebracht.
+Bei Docs-as-Code dreht sich alles darum, dass Sie Ihre Dokumentation als reinen Text verwalten. Was machen Sie aber, wenn das nicht reicht?
+
+In dieser Folge lernen Sie
+https://doctoolchain.github.io/docToolchain/[docToolchain] kennen, die
+OpenSource Lösung zur Unterstützung des Docs-As-Code Ansatzes.
+
+=== Übersicht
+
+<<overview>> zeigt Ihnen die einzelnen Komponenten unseres Ansatzes.
+Den Teil im grünen Kasten kennen Sie schon.
+Ihre Dokumentation basiert auf dem arc42-Template im AsciiDoc format.
+Diese ist modular aufgebaut, die Module werden per `include::` in das Hauptdokument referenziert (Schritt 1).
+Über Asciidoctor als Kommandozeilen-Werkzeug oder Plugin für Gradle bzw. Maven generieren Sie anschliessend HTML (Schritt 2).
+
+[[overview]]
+.Übersicht der Werkzeugkette
+image::overview.dio.png[]
+
+Die Schritte 3 und 4 erläutern wir Ihnen nun in dieser Folge unseres Artikels.
+
+=== UML Modellierung
+
+In AsciiDoc können Sie vorhandene Grafiken direkt einbetten und auch die Verwendung von PlantUML haben wir Ihnen gezeigt.
+Beides hat Grenzen.
+In PlantUML können Sie größere Diagramme nicht modellieren - die Möglichkeiten ein Layout nach Ihren Vorstellungen zu generieren sind nicht ausreichend.
+Und Ihre modellierten UML-Diagramme per Hand zu exportieren um sie dann zu referenzieren ist auf Dauer zu umständlich.
+Wenn Sie den Namen einer Komponente in Ihrer Modellierung ändern, wird es schwierig nur die Diagramme erneut zu exportieren, die sich geändert haben, denn ist unklar, welche von der Namensänderung betroffen sind.
+
+Wie wäre es, wenn Sie den Export Ihrer Diagramme und sogar der Notizen aus Ihrem UML-Modell automatisch über den Build Ihrer Dokumentation vornehmen könnten?
+
+Werfen Sie einen Blick auf die Schnittstellen Ihres UML-Tools und die Wahscheinlichkeit ist hoch, dass Sie feststellen "es funktioniert!".
+
+Wir haben es exemplarisch mit einigen oft verwendeten Applikationen ausprobiert.
+
+=== Remote Control
+
+Der Enterprise Architect(TM) (kurz EA) von Sparx Systems ist ein echtes Modellierungswerkzeug in dem Sie Elemente in mehreren Diagrammen verwenden und somit modellieren können. Für jedes Element gibt es die Möglichkeit Notizen zu erstellen.
+
+Der EA verfügt über eine COM-Schnittstelle, so dass Sie ihn von Ausserhalb der Anwendung fernsteuern können.
+Ein Visual-Basic-Skript und schon öffnen sie den EA unsichtbar, laufen durch das Modell und exportieren alle Diagramme und die hinter den Elementen liegenden Notizen.
+Dieses Skript bauen Sie dann in Ihr Build-Skript ein, um es so genauso wie Ihre anderen Software-Buildschritte aufzurufen.
+
+In Gradle geht das ganz einfach über einen Task (siehe <<gradleTask>>).
+
+[[gradleTask]]
+.Einfacher Gradle Task
+[source, groovy]
+----
+task einfacherTask (
+        dependsOn: [],
+        description: 'eine Beschreibung Ihres Tasks'
+) {
+    doLast {
+        // hier können Sie in Groovy definieren, was
+        // Ihr Task machen soll
+    }
+}
+----
+
+
+
+
+ Sie lernen die Integration von Office-Dokumenten, Confluence(TM) und Enterprise-Architect(TM)  in ihre Dokumentation kennen.
+

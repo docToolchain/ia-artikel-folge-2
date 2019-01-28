@@ -1,0 +1,20 @@
+plugins {
+    id "org.asciidoctor.convert" version "1.5.9.2"
+}
+dependencies {
+    asciidoctor 'org.asciidoctor:asciidoctorj-diagram:1.5.11'
+}
+
+//for 'clean'-task
+apply plugin:'java'
+
+asciidoctor {
+   sourceDir = file("src/docs/")
+   sources {
+      include "Part-1-Intro.adoc"
+   }
+   requires = ['asciidoctor-diagram']
+}
+
+
+defaultTasks 'asciidoctor'
