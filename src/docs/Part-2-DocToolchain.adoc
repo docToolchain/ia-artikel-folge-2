@@ -62,8 +62,53 @@ task einfacherTask (
 }
 ----
 
+Für das konkrete Beispiel rufen Sie einfach das VB-Skript aus Groovy auf.
+Doch nicht einfach?
+Jetzt kommt docToolchain in's Spiel!
 
+=== docToolchain
 
+Im Grunde sind solche Automatisierungen wie die gerade eben beschriebene einfach.
+Der Teufel steckt aber im Detail.
+Um es Ihnen einfacher zu machen, haben wir das Open -Source-Projekt docToolchain ins Leben gerufen.
+In diesem Projekt ist der oben beschreibene Task schon fertig ausprogrammiert.
+Sie können ihn einfach verwenden.
 
- Sie lernen die Integration von Office-Dokumenten, Confluence(TM) und Enterprise-Architect(TM)  in ihre Dokumentation kennen.
+Was aber, wenn nicht der richtige, von Ihnen benötigte Task in docToolchain umgesetzt ist?
+Vielleicht verwenden Sie ja ein anderes Tool zum zeichnen Ihrer Diagramme?
 
+Wir wollen docToolchain nicht nur als Werkzeug verstanden wissen, sondern auch als Idee, was Sie mit Dokumentation alles machen können.
+Und wenn Sie dann eine der in docToolchain vorhandenen Ideen auf Ihre eigene Werkzeugkette anwenden möchten, dann werden Sie sicherlich einen Task in docToolchain finden, den Sie als Template für Ihre eigene Umsetzung nutzen können.
+
+Dementsprechend stellen wir Ihnen jetzt noch weitere Ideen vor, wie Sie die Werkezuge, die sie jetzt schon verwenden, auch in Zukunft zur Pfelge Ihrer Dokumentation einbinden können.
+
+=== lesen fremder Daten
+
+Ein vorhandenes Dokumentationswerkzeug fernzusteuern und Daten zu exportieren ist zugegebener maßen nicht der beste Weg um an die Daten zu kommen.
+Sie sind durch diesen Ansatz weiterhin von dem eigentlichen Werkzeug abhängig.
+
+Lesen Sie doch einfach direkt die Daten aus der Quelle - der Datei in die Ihr Werkzeug die Daten persistiert!
+
+Dieser Ansatz ist nicht immer möglich, da nicht alle Dateiformate gut genug dokumentiert sind.
+Im Fall von MS Excel haben wir aber Glück.
+Sie finden in der Apache POI Bibliothek ein gutes Werkzeug um eine Excel-Datei direkt und ohne Umwege zu lesen.
+
+In docToolchain wird dies genutzt damit Sie Tabellen einfacher pflegen können.
+Der Task `exportExcel` sucht nach allen Excel-Datein im Projekt, öffnet sie und konvertiert den Inhalt Arbeitsblatt für Arbeitsblatt nach AsciiDoc.
+Das Ergebnis includieren Sie einfach wieder in Ihre Dokumentation.
+
+=== Versionierung
+
+Vielleicht haben Sie sich beim Lesen auch schon gedacht, welche Dateien Sie jetzt am Besten unter Versionskontrolle stellen.
+Die binären Ausgangsdateien Ihrer Werkzeuge, also Sparx Enterprise Architect und MS Excel?
+Die exportierten Dateien?
+In der Softwareentwicklung gilt es als falsch generierte Dateien zu versionieren.
+Dabei handelt es sich auch meist um compilierten Sourcecode und somit binäre Dateien, die Sie schlecht versionieren können.
+Bezüglich der Ausgangsdateien stellt sich wohl niemand die Frage der Versionierung, solange es sich um Text-Dateien handelt.
+Da in diesen Dateien Ihre Arbeit steckt, werden sie selbstverständlich versioniert.
+
+Bei Verwendung des Docs-as-Code Ansatzes dreht sich das Blatt auf einmal - zumindest bezüglich der von Ihnen verwendeten Dokumentationstools.
+Die Ausgangsdateien sind meist binär, die exportierten Daten entweder Grafiken oder Texte.
+
+Die Erfahrung hat uns gezeigt, dass auch in diesem Fall die binären Ausgangsdaten einer Versionierung und somit eines Backups unterliegen sollten.
+Git kommt mit solchen Dateien ganz gut zurecht -   
