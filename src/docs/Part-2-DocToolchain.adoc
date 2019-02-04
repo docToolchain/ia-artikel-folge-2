@@ -82,7 +82,7 @@ Und wenn Sie dann eine der in docToolchain vorhandenen Ideen auf Ihre eigene Wer
 
 Dementsprechend stellen wir Ihnen jetzt noch weitere Ideen vor, wie Sie die Werkezuge, die sie jetzt schon verwenden, auch in Zukunft zur Pfelge Ihrer Dokumentation einbinden können.
 
-=== lesen fremder Daten
+=== Lesen fremder Daten
 
 Ein vorhandenes Dokumentationswerkzeug fernzusteuern und Daten zu exportieren ist zugegebener maßen nicht der beste Weg um an die Daten zu kommen.
 Sie sind durch diesen Ansatz weiterhin von dem eigentlichen Werkzeug abhängig.
@@ -99,7 +99,7 @@ Das Ergebnis includieren Sie einfach wieder in Ihre Dokumentation.
 
 === Versionierung
 
-Vielleicht haben Sie sich beim Lesen auch schon gedacht, welche Dateien Sie jetzt am Besten unter Versionskontrolle stellen.
+Vielleicht haben Sie sich beim Lesen auch schon darüber nachgedacht, welche Dateien Sie jetzt am Besten unter Versionskontrolle stellen.
 Die binären Ausgangsdateien Ihrer Werkzeuge, also Sparx Enterprise Architect und MS Excel?
 Die exportierten Dateien?
 In der Softwareentwicklung gilt es als falsch generierte Dateien zu versionieren.
@@ -110,5 +110,46 @@ Da in diesen Dateien Ihre Arbeit steckt, werden sie selbstverständlich versioni
 Bei Verwendung des Docs-as-Code Ansatzes dreht sich das Blatt auf einmal - zumindest bezüglich der von Ihnen verwendeten Dokumentationstools.
 Die Ausgangsdateien sind meist binär, die exportierten Daten entweder Grafiken oder Texte.
 
-Die Erfahrung hat uns gezeigt, dass auch in diesem Fall die binären Ausgangsdaten einer Versionierung und somit eines Backups unterliegen sollten.
-Git kommt mit solchen Dateien ganz gut zurecht -   
+Die Erfahrung hat uns gezeigt, dass auch in diesem Fall die binären Ausgangsdateien einer Versionierung und somit eines Backups unterliegen sollten.
+Git kommt mit solchen Dateien ganz gut zurecht.
+Sollten Sie diese Dateien aber schon anderweitig verwalten, dann ist das auch in Ordnung.
+In diesem Fall sollte sich im Code-Repository jedoch ein klarer Hinweis auf die Quellen befinden.
+
+Bezüglich der exportierten Texte und Grafiken weichen wir vom Schema das Softwareentwicklers ab
+und nehmen auch diese generierten Artefakte unter Versionskontrolle.
+
+Das hat zwei entscheidende Vortaile.
+Zum einen können Sie mit diesen Dateien besser einen Vergleich durchführen und somit Änderungen besser nachverfolgen.
+Zum Anderen geht es hier aber auch um die Werterhaltung der Dokumentation. Uner Umständen ändern sich die Werkzeuge mit denen Sie die binären Ausgangsdateien bearbeiten können und Sie stellen wirgendwann fest, dass Sie diese nicht mehr bearbeiten können. Dann stehen Ihnen immer noch die generierten Artefakte zur weiteren Bearbeitung zur Verfügung.
+
+=== Der Idealfall
+
+Gerne stellen wir Ihnen auch noch vor, wie im Idealfall (aus Sicht Ihrer Werkzeugkette) die Bearbeitung Ihrer Diagramme aussehen kann.
+
+Stellen Sie sich ein flexibles Dateiformat vor, welches sich beim Referenzieren aus AsciiDoc wie eine Grafik verhält, beim Öffnen mit Ihrere Diagrammsoftware jedoch die Beschreibung des Diagramms als XML preisgibt, so dass Sie es einfach weiter bearbeiten können.
+
+Unmöglich? Draw.io nutzt die Möglichkeit Meta-Daten im PNG-Format unterzubrigen um genau diese Magie zu implementieren. Geben Sie einfach Ihrem Diagram von Anfang an die Dateiendung `.png` anstatt `.xml` und Draw.io kümmert sich um den Rest.
+Wir verwenden gerne die Endung `.dio.png` um auf einen Blick die ansonsten versteckten Meta-Daten zu erkennen.
+
+Apropos Meta-Daten im PNG-Format.
+Auch PlantUML nutzt dieses Feature und versteckt die Diagrammbeschreibung dort.
+
+TODO: plantUML Meta-Daten export Beispiel
+
+Aber Vorsicht - viele Programme ignorieren die Meta-Detn im PNG.
+Bearbeiten Sie die Diagramm-Datei mit einer weiteren Software, könnten die Meta-Daten verloren gehen.
+Aber dafür haben Sie sie ja unter Versionkontrolle...
+
+== Ausgabeformate
+
+Zurück zur <<overview>> und der Übersicht unserer Werkzeugkette.
+In Schritt zwei erzeugen Sie mit Asciidoctor im Regelfall HTML.
+Aber wie erzeugen Sie andere Ausgabeformate?
+
+TODO: was über Backends schreiben
+
+=== PDF
+
+Asciidoctor unterstützt PDF als Plugin.
+Lassen Sie sich nicht vom Versionszusatz _alpha_ irritieren.
+Das Plugin ist ausgereift genug, um es für Ihre Dokumentation zu verwenden.
