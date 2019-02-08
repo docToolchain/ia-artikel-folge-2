@@ -2,7 +2,7 @@ include::config.adoc[]
 
 == Docs-As-Code - Die Werkzeuge
 
-In der letzten Folge unseres Artikels haben wir Ihnen den Docs-as-Code Ansatz erklärt und das Wichtigste Werkzeug näher gebracht.
+In der letzten Folge unseres Artikels haben wir Ihnen den Docs-as-Code Ansatz erklärt und das wichtigste Werkzeug näher gebracht.
 Bei Docs-as-Code dreht sich alles darum, dass Sie Ihre Dokumentation als reinen Text verwalten. Was machen Sie aber, wenn das nicht reicht?
 
 In dieser Folge lernen Sie
@@ -13,23 +13,26 @@ OpenSource Lösung zur Unterstützung des Docs-As-Code Ansatzes.
 
 <<overview>> zeigt Ihnen die einzelnen Komponenten unseres Ansatzes.
 Den Teil im grünen Kasten kennen Sie schon.
-Ihre Dokumentation basiert auf dem arc42-Template im AsciiDoc format.
-Diese ist modular aufgebaut, die Module werden per `include::` in das Hauptdokument referenziert (Schritt 1).
+Ihre Dokumentation basiert auf dem arc42-Template im AsciiDoc -Format.
+Diese ist modular aufgebaut und die Module werden per `include::` in das Hauptdokument referenziert (Schritt 1).
 Über Asciidoctor als Kommandozeilen-Werkzeug oder Plugin für Gradle bzw. Maven generieren Sie anschliessend HTML (Schritt 2).
 
 [[overview]]
 .Übersicht der Werkzeugkette
 image::overview.dio.png[]
 
-Die Schritte 3 und 4 erläutern wir Ihnen nun in dieser Folge unseres Artikels.
+Die Schritte 3 und 4 erläutern wir Ihnen nun in dieser Folge unseres Artikels anhand prektischer Beispiele.
 
 === UML Modellierung
 
-In AsciiDoc können Sie vorhandene Grafiken direkt einbetten und auch die Verwendung von PlantUML haben wir Ihnen gezeigt.
+In AsciiDoc können Sie vorhandene Diagramme und Grafiken direkt referenzieren und auch die Verwendung von PlantUML haben wir Ihnen gezeigt.
 Beides hat Grenzen.
+
 In PlantUML können Sie größere Diagramme nicht modellieren - die Möglichkeiten ein Layout nach Ihren Vorstellungen zu generieren sind nicht ausreichend.
-Und Ihre modellierten UML-Diagramme per Hand zu exportieren um sie dann zu referenzieren ist auf Dauer zu umständlich.
-Wenn Sie den Namen einer Komponente in Ihrer Modellierung ändern, wird es schwierig nur die Diagramme erneut zu exportieren, die sich geändert haben, denn ist unklar, welche von der Namensänderung betroffen sind.
+
+Wenn Sie Ihre Diagramme hingegen mit einem UML-Modellierungs-Tool erstellen, müssen Sie Ihre modellierten UML-Diagramme per Hand exportieren um sie dann zu referenzieren.
+Wenn Sie z.B. den Namen einer Komponente in Ihrer Modellierung ändern, wird es schwierig nur die Diagramme erneut zu exportieren, die sich geändert haben, denn ist unklar, welche von der Namensänderung betroffen sind. Somit müssen Sie regelmässig _alle_ Diagramme aktualisieren.
+Dies ist auf Dauer zu umständlich.
 
 Wie wäre es, wenn Sie den Export Ihrer Diagramme und sogar der Notizen aus Ihrem UML-Modell automatisch über den Build Ihrer Dokumentation vornehmen könnten?
 
@@ -42,8 +45,8 @@ Wir haben es exemplarisch mit einigen oft verwendeten Applikationen ausprobiert.
 Der Enterprise Architect(TM) (kurz EA) von Sparx Systems ist ein echtes Modellierungswerkzeug in dem Sie Elemente in mehreren Diagrammen verwenden und somit modellieren können. Für jedes Element gibt es die Möglichkeit Notizen zu erstellen.
 
 Der EA verfügt über eine COM-Schnittstelle, so dass Sie ihn von Ausserhalb der Anwendung fernsteuern können.
-Ein Visual-Basic-Skript und schon öffnen sie den EA unsichtbar, laufen durch das Modell und exportieren alle Diagramme und die hinter den Elementen liegenden Notizen.
-Dieses Skript bauen Sie dann in Ihr Build-Skript ein, um es so genauso wie Ihre anderen Software-Buildschritte aufzurufen.
+Ein Visual-Basic-Skript und schon öffnen sie den EA unsichtbar, laufen durch das Modell und exportieren alle Diagramme mit samt den hinter den Elementen liegenden Notizen.
+Dieses Skript bauen Sie dann in Ihr Build-Skript ein, um es so (genauso wie Ihre anderen Software-Buildschritte) aufzurufen.
 
 In Gradle geht das ganz einfach über einen Task (siehe <<gradleTask>>).
 
@@ -62,25 +65,32 @@ task einfacherTask (
 }
 ----
 
-Für das konkrete Beispiel rufen Sie einfach das VB-Skript aus Groovy auf.
-Doch nicht einfach?
+Für das konkrete Beispiel rufen Sie das VB-Skript aus Groovy auf. <<doctoolchain-overview>> ist so erzeugt worden.
+
+Klingt doch nicht einfach?
 Jetzt kommt docToolchain in's Spiel!
 
-=== docToolchain
+== docToolchain
 
-Im Grunde sind solche Automatisierungen wie die gerade eben beschriebene einfach.
+Im Grunde sind solche Automatisierungen, wie die gerade eben beschriebene, einfach.
 Der Teufel steckt aber im Detail.
+
 Um es Ihnen einfacher zu machen, haben wir das Open -Source-Projekt docToolchain ins Leben gerufen.
-In diesem Projekt ist der oben beschreibene Task schon fertig ausprogrammiert.
+In diesem Projekt ist der oben beschriebene Task schon fertig ausprogrammiert.
 Sie können ihn einfach verwenden.
+Eine Übersicht über alle zur Zeit vorhandenen Tasks zeigt <<doctoolchain-overview>>. Ausführliche Beschreibungen finden Sie in der https://doctoolchain.github.io/docToolchain[Dokumentation].
+
+[[doctoolchain-overview]]
+.docToolchain Übersicht
+image::ea/Overview2.png[]
 
 Was aber, wenn nicht der richtige, von Ihnen benötigte Task in docToolchain umgesetzt ist?
 Vielleicht verwenden Sie ja ein anderes Tool zum zeichnen Ihrer Diagramme?
 
 Wir wollen docToolchain nicht nur als Werkzeug verstanden wissen, sondern auch als Idee, was Sie mit Dokumentation alles machen können.
-Und wenn Sie dann eine der in docToolchain vorhandenen Ideen auf Ihre eigene Werkzeugkette anwenden möchten, dann werden Sie sicherlich einen Task in docToolchain finden, den Sie als Template für Ihre eigene Umsetzung nutzen können.
+Und wenn Sie dann eine der in docToolchain vorhandenen Ideen in Ihrer eigene Werkzeugkette anwenden möchten, dann werden Sie sicherlich einen Task in docToolchain finden, den Sie als Template für Ihre eigene Umsetzung nutzen können.
 
-Dementsprechend stellen wir Ihnen jetzt noch weitere Ideen vor, wie Sie die Werkezuge, die sie jetzt schon verwenden, auch in Zukunft zur Pfelge Ihrer Dokumentation einbinden können.
+Dem entsprechend stellen wir Ihnen jetzt noch weitere Ideen vor, wie Sie die Werkezuge, die sie jetzt schon verwenden, auch in Zukunft zur Pflege Ihrer Dokumentation einbinden können.
 
 === Lesen fremder Daten
 
@@ -94,15 +104,17 @@ Im Fall von MS Excel haben wir aber Glück.
 Sie finden in der Apache POI Bibliothek ein gutes Werkzeug um eine Excel-Datei direkt und ohne Umwege zu lesen.
 
 In docToolchain wird dies genutzt damit Sie Tabellen einfacher pflegen können.
-Der Task `exportExcel` sucht nach allen Excel-Datein im Projekt, öffnet sie und konvertiert den Inhalt Arbeitsblatt für Arbeitsblatt nach AsciiDoc.
+Der Task https://doctoolchain.github.io/docToolchain/#_exportexcel[`exportExcel`] sucht nach allen Excel-Datein im Projekt, öffnet sie und konvertiert den Inhalt Arbeitsblatt für Arbeitsblatt nach AsciiDoc.
 Das Ergebnis includieren Sie einfach wieder in Ihre Dokumentation.
 
 === Versionierung
 
-Vielleicht haben Sie sich beim Lesen auch schon darüber nachgedacht, welche Dateien Sie jetzt am Besten unter Versionskontrolle stellen.
+Vielleicht haben Sie beim Lesen des Artikels auch schon darüber nachgedacht, welche Dateien Sie jetzt am Besten unter Versionskontrolle stellen.
+
 Die binären Ausgangsdateien Ihrer Werkzeuge, also Sparx Enterprise Architect und MS Excel?
 Die exportierten Dateien?
-In der Softwareentwicklung gilt es als falsch generierte Dateien zu versionieren.
+
+In der Softwareentwicklung gilt es als falsch, generierte Dateien zu versionieren.
 Dabei handelt es sich auch meist um compilierten Sourcecode und somit binäre Dateien, die Sie schlecht versionieren können.
 Bezüglich der Ausgangsdateien stellt sich wohl niemand die Frage der Versionierung, solange es sich um Text-Dateien handelt.
 Da in diesen Dateien Ihre Arbeit steckt, werden sie selbstverständlich versioniert.
@@ -153,3 +165,24 @@ TODO: was über Backends schreiben
 Asciidoctor unterstützt PDF als Plugin.
 Lassen Sie sich nicht vom Versionszusatz _alpha_ irritieren.
 Das Plugin ist ausgereift genug, um es für Ihre Dokumentation zu verwenden.
+
+Sie aktivieren das Plugin in Ihrem Build indem Sie eine Zeile hinzufügen:
+
+[source,groovy]
+----
+include::../../build.gradle[tags=pdf-plugin]
+----
+
+Anschliessend sollten Sie den Asciidoctor-Task duplizieren.
+In Gradle ist es leicht möglich zwei getrennte Tasks zu erstellen, die beide vom Asciidoctor-Task "erben".
+Dies ermöglich es Ihnen für die Generierung von PDF andere Attribute zu setzen, wie für die Generierung von HTML.
+
+[source,groovy]
+----
+include::../../build.gradle[tags=asciidoctor]
+----
+
+Mit `.yaml`-basierten Styles footn können Sie anschliessend noch jedes Details des PDFs konfigurieren
+
+=== DOCX
+

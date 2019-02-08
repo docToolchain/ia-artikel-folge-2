@@ -1,20 +1,43 @@
 plugins {
     id "org.asciidoctor.convert" version "1.5.9.2"
 }
+// tag::pdf-plugin[]
 dependencies {
     asciidoctor 'org.asciidoctor:asciidoctorj-diagram:1.5.11'
+    asciidoctor 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.15'
 }
+// end::pdf-plugin[]
+
+import org.asciidoctor.gradle.AsciidoctorTask
 
 //for 'clean'-task
 apply plugin:'java'
 
-asciidoctor {
+// tag::asciidoctor[]
+
+// common settings for asciidoctor
+// this is needed for PDF generation with plantUML
+tasks.withType(AsciidoctorTask) { docTask ->
+
    sourceDir = file("src/docs/")
    sources {
-      include "Part-1-Intro.adoc"
+      include "Part-2-DocToolchain.adoc"
    }
    requires = ['asciidoctor-diagram']
 }
 
+task generateHTML (
+        type: AsciidoctorTask,
+) {
+    backends = ['html5']
+}
 
-defaultTasks 'asciidoctor'
+task generatePDF (
+        type: AsciidoctorTask,
+) {
+    backends = ['pdf']
+}
+
+// end::asciidoctor[]
+
+defaultTasks 'generateHTML'
