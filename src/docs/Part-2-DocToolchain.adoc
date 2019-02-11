@@ -21,7 +21,7 @@ Diese ist modular aufgebaut und die Module werden per `include::` in das Hauptdo
 .Übersicht der Werkzeugkette
 image::overview.dio.png[]
 
-Die Schritte 3 und 4 erläutern wir Ihnen nun in dieser Folge unseres Artikels anhand prektischer Beispiele.
+Die Schritte 3 und 4 erläutern wir Ihnen nun in dieser Folge unseres Artikels anhand praktischer Beispiele.
 
 === UML Modellierung
 
