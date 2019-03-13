@@ -154,7 +154,7 @@ Auch PlantUML nutzt dieses Feature und versteckt den Quellcode der Diagramme dor
 java -jar plantuml.jar -metadata ihr-diagramm.png
 ```
 
-Hinweis: viele Programme (u.a. MS-Paint) ignorieren die Meta-Daten in PNG-Dateien oder löschen sie sogar.
+Hinweis: viele Programme (u.a. Paint.net) ignorieren die Meta-Daten in PNG-Dateien oder löschen sie sogar.
 Bearbeiten Sie die Diagramm-Datei mit einer solchen Software, könnten die Meta-Daten verloren gehen.
 Aber dafür haben Sie Diagramme ja unter Versionkontrolle...
 
