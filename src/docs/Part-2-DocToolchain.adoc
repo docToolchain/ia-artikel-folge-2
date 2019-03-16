@@ -21,26 +21,25 @@ Diese ist modular aufgebaut und die Module werden per `include::` in das Hauptdo
 .Übersicht der Werkzeugkette
 image::overview.dio.png[]
 
-Die Schritte 3 und 4 erläutern wir Ihnen nun in dieser Folge unseres Artikels anhand prektischer Beispiele.
+Die Schritte 3 und 4 erläutern wir Ihnen nun in dieser Folge unseres Artikels anhand praktischer Beispiele.
 
 === UML Modellierung
 
 In AsciiDoc können Sie vorhandene Diagramme und Grafiken direkt referenzieren und auch die Verwendung von PlantUML haben wir Ihnen gezeigt.
 Beides hat Grenzen.
 
-In PlantUML können Sie größere Diagramme nicht modellieren - die Möglichkeiten ein Layout nach Ihren Vorstellungen zu generieren sind nicht ausreichend.
+PlantUML scheitert an der Modellierung umfangreicherDiagramme, mangels geeigneter Möglichkeiten, das Layout nach Ihren Vorstellungen Einfluss zu beeinflussen.
 
-Wenn Sie Ihre Diagramme hingegen mit einem UML-Modellierungs-Tool erstellen, müssen Sie Ihre modellierten UML-Diagramme per Hand exportieren um sie dann zu referenzieren.
-Wenn Sie z.B. den Namen einer Komponente in Ihrer Modellierung ändern, wird es schwierig nur die Diagramme erneut zu exportieren, die sich geändert haben, denn ist unklar, welche von der Namensänderung betroffen sind. Somit müssen Sie regelmässig _alle_ Diagramme aktualisieren.
+Erstellen Sie Ihre Diagramme hingegen mit einem UML-Modellierungs-Tool, müssen Sie Ihre Diagramme per Hand exportieren, um sie dann aus AsciiDoc heraus zu referenzieren.
+Wenn Sie z.B. den Namen einer Komponente in Ihrer Modellierung ändern, wird es schwierig nur die Diagramme erneut zu exportieren, die sich geändert haben: Oft ist unklar, welche Diagramme von dieser Namensänderung betroffen sind. Somit müssen Sie regelmässig _alle_ Diagramme aktualisieren.
 Dies ist auf Dauer zu umständlich.
 
-Wie wäre es, wenn Sie den Export Ihrer Diagramme und sogar der Notizen aus Ihrem UML-Modell automatisch über den Build Ihrer Dokumentation vornehmen könnten?
+Es wäre doch super, wenn Sie den Export Ihrer Diagramme und sogar der Notizen aus Ihrem UML-Modell automatisch über den Build Ihrer Dokumentation vornehmen könnten!
 
-Werfen Sie einen Blick auf die Schnittstellen Ihres UML-Tools und die Wahscheinlichkeit ist hoch, dass Sie feststellen "es funktioniert!".
+Für gängige UML-Tools ist die Wahscheinlichkeit hoch, dass ein solcher automatischer Export funktioniert!.
+Wir haben es für Sie exemplarisch mit einigen oft verwendeten Applikationen ausprobiert.
 
-Wir haben es exemplarisch mit einigen oft verwendeten Applikationen ausprobiert.
-
-=== Remote Control
+=== UML-Tools fernbedienen
 
 Der Enterprise Architect(TM) (kurz EA) von Sparx Systems ist ein echtes Modellierungswerkzeug in dem Sie Elemente in mehreren Diagrammen verwenden und somit modellieren können. Für jedes Element gibt es die Möglichkeit Notizen zu erstellen.
 
@@ -76,8 +75,8 @@ Im Grunde sind solche Automatisierungen, wie die gerade eben beschriebene, einfa
 Der Teufel steckt aber im Detail.
 
 Um es Ihnen einfacher zu machen, haben wir das Open -Source-Projekt docToolchain ins Leben gerufen.
-In diesem Projekt ist der oben beschriebene Task schon fertig ausprogrammiert.
-Sie können ihn einfach verwenden.
+In diesem Projekt ist der oben beschriebene Task schon fertig ausprogrammiert und Sie können ihn einfach verwenden.
+
 Eine Übersicht über alle zur Zeit vorhandenen Tasks zeigt <<doctoolchain-overview>>. Ausführliche Beschreibungen finden Sie in der https://doctoolchain.github.io/docToolchain[Dokumentation].
 
 [[doctoolchain-overview]]
@@ -88,14 +87,14 @@ Was aber, wenn nicht der richtige, von Ihnen benötigte Task in docToolchain umg
 Vielleicht verwenden Sie ja ein anderes Tool zum zeichnen Ihrer Diagramme?
 
 Wir wollen docToolchain nicht nur als Werkzeug verstanden wissen, sondern auch als Idee, was Sie mit Dokumentation alles machen können.
-Und wenn Sie dann eine der in docToolchain vorhandenen Ideen in Ihrer eigene Werkzeugkette anwenden möchten, dann werden Sie sicherlich einen Task in docToolchain finden, den Sie als Template für Ihre eigene Umsetzung nutzen können.
 
-Dem entsprechend stellen wir Ihnen jetzt noch weitere Ideen vor, wie Sie die Werkezuge, die sie jetzt schon verwenden, auch in Zukunft zur Pflege Ihrer Dokumentation einbinden können.
+Falls Sie dann eine der in docToolchain vorhandenen Ideen in Ihrer eigene Werkzeugkette anwenden möchten, dann finden Sie sicherlich einen Task in docToolchain, den Sie als Template für Ihre eigene Umsetzung nutzen können.
+
+Dem entsprechend stellen wir Ihnen jetzt noch weitere Möglichkeiten vor, wie Sie Ihre aktuellen Werkzeuge auch in Zukunft zur Pflege Ihrer Dokumentation einbinden können.
 
 === Lesen fremder Daten
 
-Ein vorhandenes Dokumentationswerkzeug fernzusteuern und Daten zu exportieren ist zugegebener maßen nicht der beste Weg um an die Daten zu kommen.
-Sie sind durch diesen Ansatz weiterhin von dem eigentlichen Werkzeug abhängig.
+Ein vorhandenes Dokumentationswerkzeug fernzusteuern und Daten zu exportieren bindet sie technisch eng an dieses Werkzeug: Während des Build-Prozesses muss dieses Werkzeug zur Verfügung stehen.
 
 Lesen Sie doch einfach direkt die Daten aus der Quelle - der Datei in die Ihr Werkzeug die Daten persistiert!
 
@@ -141,23 +140,23 @@ und Sie stellen irgendwann fest, dass Sie diese nicht mehr bearbeiten können. D
 
 Gerne stellen wir Ihnen auch noch vor, wie im Idealfall (aus Sicht Ihrer Werkzeugkette) die Bearbeitung Ihrer Diagramme aussehen kann.
 
-Stellen Sie sich ein flexibles Dateiformat vor, welches sich beim Referenzieren aus AsciiDoc wie eine Grafik verhält, beim Öffnen mit Ihrer Diagrammsoftware jedoch die Beschreibung des Diagramms als XML preisgibt, so dass Sie es einfach weiter bearbeiten können.
+Stellen Sie sich ein flexibles Dateiformat vor, welches sich beim Referenzieren aus AsciiDoc wie eine Grafik verhält, beim Öffnen mit Ihrer Diagrammsoftware jedoch die Beschreibung des Diagramms als XML preisgibt, so dass Sie es einfach weiter (als Vektorgrafik!) bearbeiten können.
 
 Unmöglich?
-https://draw.io[Draw.io] nutzt die Möglichkeit Meta-Daten im PNG-Format unterzubrigen um genau diese Magie zu implementieren.
+https://draw.io[Draw.io] speichert Meta-Daten im PNG-Format um genau diese Magie zu implementieren:
 Geben Sie einfach Ihrem Diagram von Anfang an die Dateiendung `.png` anstatt `.xml` und Draw.io kümmert sich um den Rest.
 Wir verwenden gerne die Endung `.dio.png` um auf einen Blick die ansonsten versteckten Meta-Daten zu erkennen.
 
 Apropos Meta-Daten im PNG-Format.
-Auch PlantUML nutzt dieses Feature und versteckt die Diagrammbeschreibung dort.
+Auch PlantUML nutzt dieses Feature und versteckt den Quellcode der Diagramme dort.
 
 ```
 java -jar plantuml.jar -metadata ihr-diagramm.png
 ```
 
-Hinweis: viele Programme ignorieren die Meta-Daten im PNG.
-Bearbeiten Sie die Diagramm-Datei mit einer weiteren Software, könnten die Meta-Daten verloren gehen.
-Aber dafür haben Sie sie ja unter Versionkontrolle...
+Hinweis: viele Programme (u.a. Paint.net) ignorieren die Meta-Daten in PNG-Dateien oder löschen sie sogar.
+Bearbeiten Sie die Diagramm-Datei mit einer solchen Software, könnten die Meta-Daten verloren gehen.
+Aber dafür haben Sie Diagramme ja unter Versionkontrolle...
 
 == Ausgabeformate
 
@@ -167,13 +166,10 @@ Aber wie erzeugen Sie andere Ausgabeformate?
 
 === Backends
 
-Asciidoctor benutzt zum Erzeugen verschiedener Ausgabeformate sogenannte Backends, die aus http://slim-lang.com/[Slim-Templates] bestehen.
-Das funktioniert prima mit den eingebauten Backends für HTML5 und docBook.
-Es funktioniert auch gut, wenn Sie https://doctoolchain.github.io/docToolchain/#_generatedeck[reveal.js Präsentationen erstellen] möchten.
+Asciidoctor benutzt zum Erzeugen verschiedener Ausgabeformate sogenannte _Backends_.
+Das funktioniert prima mit den integrierte Backends für HTML5 und docBook, ebenso wenn Sie mit https://doctoolchain.github.io/docToolchain/#_generatedeck[reveal.js Präsentationen erstellen] möchten.
 
-Den Templates sind jedoch Grenzen gesetzt und die Dokumentation der Zuordnung verschiedener AsciiDoc Syntax-Elemente zu Slim-Templates ist nicht auffindbar.
-
-Dennoch schränkt das die möglichen Ausgabeformate nicht ein.
+Jedoch gibt es auch über diese eingebauten Formate hinaus weitere Möglichkeiten.
 
 === PDF
 
@@ -190,7 +186,7 @@ include::../../build.gradle[tags=pdf-plugin]
 
 Anschliessend sollten Sie den Asciidoctor-Task duplizieren.
 In Gradle ist es leicht möglich zwei getrennte Tasks zu erstellen, die beide vom Asciidoctor-Task "erben".
-Dies ermöglich es Ihnen für die Generierung von PDF andere Attribute zu setzen, wie für die Generierung von HTML.
+Dies ermöglich es Ihnen für die Generierung von PDF andere Attribute zu setzen, als für die Generierung von HTML.
 
 [source,groovy]
 ----
@@ -202,6 +198,8 @@ Der https://github.com/asciidoctor/asciidoctor-pdf/blob/master/docs/theming-guid
 So haben Sie für die PDF-Ausgabe kontrolle über Formatierungen, die nur bei seitenorientierten Formaten sinn machen,
 wie z.B. unterschiedliche Fusszeilen für linke und rechte Seite.
 
+Einige umfangreiche Beispiele für die Generierung von pdf aus AsciiDoc finden Sie auf dem https://github.com/isaqb-org[Github-Account] des iSAQB, etwa beim https://github.com/isaqb-org/curriculum-template[Foundation-Lehrplan].
+
 === DOCX
 
 Möchten Sie Ihre Dokumentation im https://en.wikipedia.org/wiki/Office_Open_XML[Office Open XML] DOCX Format erstellen, so dass sie z.B. mit MS-Word gelesen werden kann, so ist ein Zwischenschritt notwendig.
@@ -209,9 +207,9 @@ Möchten Sie Ihre Dokumentation im https://en.wikipedia.org/wiki/Office_Open_XML
 AsciiDoc bzw. Asciidoctor ist mit dem docBook-Format im Hinterkopf entwickelt worden und Asciidoctor unterstützt docBook als internes Backend.
 Sie können also davon ausgehen, dass alle Formatierungen beim Erstellen Ihrer Dokumentation sich auch in der docBook Ausgabe von Asciidoctor wiederfinden.
 
-Dies nutzen wir und wandeln mit dem bekannten Tool https://pandoc.org/[Pandoc] anschliessend das docBook-Format weiter in DOCX oder auch ePUB.
+Dies nutzen wir und wandeln mit Hife von https://pandoc.org/[Pandoc] (dem Schweizer Taschenmesser der Formatkonvertierung) anschliessend das docBook-Format weiter in DOCX oder auch ePUB.
 
-Dazu sollte Pandoc auf der Kommandozeile installiert sein.
+Dazu benötigen Sie eine funktionsfähige Installation von Pandoc - insbesondere muss das `pandoc` Tool per Kommandozeile ausführbar sein.
 
 === Confluence
 
@@ -220,9 +218,9 @@ Für den Export Ihrer Dokumentation aus anderen Werkzeugen haben wir Ihnen oben 
 Auch in Bezug auf Ausgabeformate gibt es weitere Ansätze.
 
 Confluence, als ein bekannter Vertreter eines Wikis, ist ein web-basiertes Werkzeug und verfügt über eine REST API.
-Das interne Speicherformat ist ein xHTML-Dialekt.
+Es nutzt einen XHTML-Dialekt als internes Speicherformat.
 
-Was leigt also näher, als die AsciiDoc Dokumentation zuerst nach HTML5 (welches xHTML konform ist) zu wandeln, per Gradle Tasks ein wenig zu transformieren und dann per REST-API nach Confluence zu übertragen?
+Was liegt also näher, als die AsciiDoc Dokumentation zuerst nach HTML5 (das ist von Natur aus xHTML konform) zu wandeln, per Gradle Tasks ein wenig zu transformieren und dann per REST-API nach Confluence zu übertragen?
 
 Die Transformation ermöglichte es Ihnen die Ausgabe an die Zielumgebung anzupassen.
 Während in HTML eine einzige große Seite sich als praktisch erweist, konvertieren wir mit docToolchain die Seite für Confluence entsprechend der Überschriften in mehrere kleinere Seiten.
