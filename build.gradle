@@ -40,4 +40,10 @@ task generatePDF (
 
 // end::asciidoctor[]
 
+
+def gitHubBasePath = 'https://raw.githubusercontent.com/docToolchain/docToolchain/4e18c71d0385b10b12c335ac296425b2d6e795f9/'
+
+apply from: gitHubBasePath + 'scripts/AsciiDocBasics.gradle'
+apply from: gitHubBasePath + 'scripts/exportEA.gradle'
+
 defaultTasks 'generateHTML'
