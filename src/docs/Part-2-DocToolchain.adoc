@@ -88,7 +88,7 @@ Vielleicht verwenden Sie ja ein anderes Tool zum zeichnen Ihrer Diagramme?
 
 Wir wollen docToolchain nicht nur als Werkzeug verstanden wissen, sondern auch als Idee, was Sie mit Dokumentation alles machen können.
 
-Falls Sie dann eine der in docToolchain vorhandenen Ideen in Ihrer eigene Werkzeugkette anwenden möchten, dann finden Sie sicherlich einen Task in docToolchain, den Sie als Template für Ihre eigene Umsetzung nutzen können.
+Falls Sie dann eine der in docToolchain vorhandenen Ideen in Ihrer eigenen Werkzeugkette anwenden möchten, dann finden Sie sicherlich einen Task in docToolchain, den Sie als Template für Ihre eigene Umsetzung nutzen können.
 
 Dem entsprechend stellen wir Ihnen jetzt noch weitere Möglichkeiten vor, wie Sie Ihre aktuellen Werkzeuge auch in Zukunft zur Pflege Ihrer Dokumentation einbinden können.
 
@@ -126,7 +126,7 @@ Git kommt mit solchen Dateien ganz gut zurecht.
 Sollten Sie diese Dateien aber schon anderweitig verwalten, weil Sie z.B. Ihr UML Modell in der Datenbank speichern, dann ist das auch in Ordnung.
 In diesem Fall sollte sich im Code-Repository jedoch ein klarer Hinweis auf die Quellen befinden.
 
-Bezüglich der exportierten Texte und Grafiken weichen wir vom Schema das Softwareentwicklers ab
+Bezüglich der exportierten Texte und Grafiken weichen wir vom Schema des Softwareentwicklers ab
 und nehmen auch diese generierten Artefakte unter Versionskontrolle.
 
 Das hat zwei entscheidende Vorteile.
@@ -150,13 +150,15 @@ Wir verwenden gerne die Endung `.dio.png` um auf einen Blick die ansonsten verst
 Apropos Meta-Daten im PNG-Format.
 Auch PlantUML nutzt dieses Feature und versteckt den Quellcode der Diagramme dort.
 
+Mit folgender Zeile machen Sie die Quellen wieder sichtbar:
+
 ```
 java -jar plantuml.jar -metadata ihr-diagramm.png
 ```
 
 Hinweis: viele Programme (u.a. Paint.net) ignorieren die Meta-Daten in PNG-Dateien oder löschen sie sogar.
 Bearbeiten Sie die Diagramm-Datei mit einer solchen Software, könnten die Meta-Daten verloren gehen.
-Aber dafür haben Sie Diagramme ja unter Versionkontrolle...
+Aber dafür haben Sie die Diagramme ja unter Versionkontrolle...
 
 == Ausgabeformate
 
