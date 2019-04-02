@@ -12,6 +12,13 @@ import org.asciidoctor.gradle.AsciidoctorTask
 
 //for 'clean'-task
 apply plugin:'java'
+/**
+
+this part is commented out because it is
+the manual way of setting up HTML and PDF
+generation.
+The next block will show you how to remotely
+reference parts of docToolchain.
 
 // tag::asciidoctor[]
 
@@ -39,11 +46,15 @@ task generatePDF (
 }
 
 // end::asciidoctor[]
+**/
 
-
+//the base-URL for DocToolchain
+//it includes the commit hash in order to ensure
+//we always get the same version of the scripts
 def gitHubBasePath = 'https://raw.githubusercontent.com/docToolchain/docToolchain/4e18c71d0385b10b12c335ac296425b2d6e795f9/'
 
-//apply from: gitHubBasePath + 'scripts/AsciiDocBasics.gradle'
-//apply from: gitHubBasePath + 'scripts/exportEA.gradle'
+//we only need those two scripts for this project
+apply from: gitHubBasePath + 'scripts/AsciiDocBasics.gradle'
+apply from: gitHubBasePath + 'scripts/exportEA.gradle'
 
 defaultTasks 'generateHTML'
