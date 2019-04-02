@@ -1,5 +1,6 @@
+:imagesdir: .
 
-= image:./src/hhgdac-logo.png[] Docs-as-Code: (technische) Dokumentation in _gut_
+= image:src/docs/images/hhgdac-logo.png[] Docs-as-Code: (technische) Dokumentation in _gut_
 
 [small]
 --
