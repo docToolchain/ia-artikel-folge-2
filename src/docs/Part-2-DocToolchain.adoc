@@ -81,7 +81,7 @@ Eine Übersicht über alle zur Zeit vorhandenen Tasks zeigt <<doctoolchain-overv
 
 [[doctoolchain-overview]]
 .docToolchain Übersicht
-image::ea/Overview2.png[]
+image::ea/manual/Overview2.png[]
 
 Was aber, wenn nicht der richtige, von Ihnen benötigte Task in docToolchain umgesetzt ist?
 Vielleicht verwenden Sie ja ein anderes Tool zum zeichnen Ihrer Diagramme?

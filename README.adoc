@@ -29,18 +29,41 @@ image:https://gitpod.io/button/open-in-gitpod.svg[link="https://gitpod.io#https:
 
 == Einführung
 
-Wir haben einen Wrapper für Gradle zugefügt - das macht den Einstieg für Sie noch einfacher:
+Wir haben einen Wrapper für Gradle zugefügt - das macht den Einstieg für Sie noch einfacher.
+Da wir diesmal docToolchain verwenden, wird die HTML-Dokumentation mit
 
-    ./gradlew asciidoctor
+    ./gradlew generateHTML
+
+und die PDF-Dokumentation mit
+
+    ./gradlew generatePDF
+
+erzeugt.
 
 
 Falls Sie Gradle bereits installiert haben, geht's auch so:
 
-    gradle asciidoctor
+    gradle generateHTML
 
 Das Ergebnis, die Datei `Part-2-DocToolchain.html`, wird ins Verzeichnis
 `./build/asciidoc/html5` generiert, und entspricht dem Artikel aus der Informatik Aktuell.
 
+Sie haben den Sparx Enterprise Architect auf Ihrem System installiert?
+Dann probieren Sie doch mal
+
+    ./gradlew exportEA
+
+aus.
+Hier spielt docToolchain sein volles Potential aus:
+EA wird headless gestartet und das Architektur-Diagramm aus dem Artikel neu exportiert.
+Ändern Sie das Diagramm und rufen
+
+    ./gradlew exportEA generatePDF
+
+aus.
+Und schon sind Ihre Änderungen im aktuellen PDF!
+
+Sollten Sie den EA nicht auf Ihrem System haben, werden Sie die Entscheidung zu schätzen wissen, dass die exportierten Diagramme unter Versionkontrolle stehen und Sie dennoch die Dokumentation generieren können...
 
 Viel Spass beim Experimentieren!
 
