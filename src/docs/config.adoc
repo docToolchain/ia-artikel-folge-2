@@ -2,7 +2,7 @@
 :icons: font
 :numbered : true
 :source-highlighter: coderay
-:imagesdir: images
+ifndef::imagesdir[:imagesdir: images]
 :figure-caption: Abbildung
 :table-caption: Tabelle
 :example-caption: Beispiel
