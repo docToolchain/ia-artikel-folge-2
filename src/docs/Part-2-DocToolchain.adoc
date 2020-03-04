@@ -2,20 +2,20 @@ include::config.adoc[]
 
 == Docs-As-Code - Die Werkzeuge
 
-In der letzten Folge unseres Artikels haben wir Ihnen den Docs-as-Code Ansatz erklärt und das wichtigste Werkzeug näher gebracht.
+In der letzten Folge unseres Artikels haben wir Ihnen den Docs-as-Code-Ansatz erklärt und das wichtigste Werkzeug näher gebracht.
 Bei Docs-as-Code dreht sich alles darum, dass Sie Ihre Dokumentation als reinen Text verwalten. Was machen Sie aber, wenn das nicht reicht?
 
 In dieser Folge lernen Sie
 https://doctoolchain.github.io/docToolchain/[docToolchain] kennen, die
-OpenSource Lösung zur Unterstützung des Docs-As-Code Ansatzes.
+OpenSource-Lösung zur Unterstützung des Docs-As-Code-Ansatzes.
 
 === Übersicht
 
 <<overview>> zeigt Ihnen die einzelnen Komponenten unseres Ansatzes.
 Den Teil im grünen Kasten kennen Sie schon.
-Ihre Dokumentation basiert auf dem arc42-Template im AsciiDoc -Format.
+Ihre Dokumentation basiert auf dem arc42-Template im AsciiDoc-Format.
 Diese ist modular aufgebaut und die Module werden per `include::` in das Hauptdokument referenziert (Schritt 1).
-Über Asciidoctor als Kommandozeilen-Werkzeug oder Plugin für Gradle bzw. Maven generieren Sie anschliessend HTML (Schritt 2).
+Über Asciidoctor als Kommandozeilen-Werkzeug oder Plugin für Gradle bzw. Maven generieren Sie anschließend HTML (Schritt 2).
 
 [[overview]]
 .Übersicht der Werkzeugkette
@@ -23,34 +23,34 @@ image::overview.dio.png[]
 
 Die Schritte 3 und 4 erläutern wir Ihnen nun in dieser Folge unseres Artikels anhand praktischer Beispiele.
 
-=== UML Modellierung
+=== UML-Modellierung
 
 In AsciiDoc können Sie vorhandene Diagramme und Grafiken direkt referenzieren und auch die Verwendung von PlantUML haben wir Ihnen gezeigt.
 Beides hat Grenzen.
 
-PlantUML scheitert an der Modellierung umfangreicherDiagramme, mangels geeigneter Möglichkeiten, das Layout nach Ihren Vorstellungen Einfluss zu beeinflussen.
+PlantUML scheitert an der Modellierung umfangreicher Diagramme, mangels geeigneter Möglichkeiten, das Layout nach Ihren Vorstellungen Einfluss zu beeinflussen.
 
 Erstellen Sie Ihre Diagramme hingegen mit einem UML-Modellierungs-Tool, müssen Sie Ihre Diagramme per Hand exportieren, um sie dann aus AsciiDoc heraus zu referenzieren.
-Wenn Sie z.B. den Namen einer Komponente in Ihrer Modellierung ändern, wird es schwierig nur die Diagramme erneut zu exportieren, die sich geändert haben: Oft ist unklar, welche Diagramme von dieser Namensänderung betroffen sind. Somit müssen Sie regelmässig _alle_ Diagramme aktualisieren.
+Wenn Sie z.B. den Namen einer Komponente in Ihrer Modellierung ändern, wird es schwierig nur die Diagramme erneut zu exportieren, die sich geändert haben: Oft ist unklar, welche Diagramme von dieser Namensänderung betroffen sind. Somit müssen Sie regelmäßig _alle_ Diagramme aktualisieren.
 Dies ist auf Dauer zu umständlich.
 
 Es wäre doch super, wenn Sie den Export Ihrer Diagramme und sogar der Notizen aus Ihrem UML-Modell automatisch über den Build Ihrer Dokumentation vornehmen könnten!
 
-Für gängige UML-Tools ist die Wahscheinlichkeit hoch, dass ein solcher automatischer Export funktioniert!.
+Für gängige UML-Tools ist die Wahrscheinlichkeit hoch, dass ein solcher automatischer Export funktioniert!
 Wir haben es für Sie exemplarisch mit einigen oft verwendeten Applikationen ausprobiert.
 
 === UML-Tools fernbedienen
 
-Der Enterprise Architect(TM) (kurz EA) von Sparx Systems ist ein echtes Modellierungswerkzeug in dem Sie Elemente in mehreren Diagrammen verwenden und somit modellieren können. Für jedes Element gibt es die Möglichkeit Notizen zu erstellen.
+Der Enterprise Architect(TM) (kurz EA) von Sparx Systems ist ein echtes Modellierungswerkzeug in dem Sie Elemente in mehreren Diagrammen verwenden und somit modellieren können. Für jedes Element gibt es die Möglichkeit, Notizen zu erstellen.
 
-Der EA verfügt über eine COM-Schnittstelle, so dass Sie ihn von Ausserhalb der Anwendung fernsteuern können.
+Der EA verfügt über eine COM-Schnittstelle, so dass Sie ihn von außerhalb der Anwendung fernsteuern können.
 Ein Visual-Basic-Skript und schon öffnen sie den EA unsichtbar, laufen durch das Modell und exportieren alle Diagramme mit samt den hinter den Elementen liegenden Notizen.
 Dieses Skript bauen Sie dann in Ihr Build-Skript ein, um es so (genauso wie Ihre anderen Software-Buildschritte) aufzurufen.
 
 In Gradle geht das ganz einfach über einen Task (siehe <<gradleTask>>).
 
 [[gradleTask]]
-.Einfacher Gradle Task
+.Einfacher Gradle-Task
 [source, groovy]
 ----
 task einfacherTask (
@@ -74,7 +74,7 @@ Jetzt kommt docToolchain in's Spiel!
 Im Grunde sind solche Automatisierungen, wie die gerade eben beschriebene, einfach.
 Der Teufel steckt aber im Detail.
 
-Um es Ihnen einfacher zu machen, haben wir das Open -Source-Projekt docToolchain ins Leben gerufen.
+Um es Ihnen einfacher zu machen, haben wir das Open-Source-Projekt docToolchain ins Leben gerufen.
 In diesem Projekt ist der oben beschriebene Task schon fertig ausprogrammiert und Sie können ihn einfach verwenden.
 
 Eine Übersicht über alle zur Zeit vorhandenen Tasks zeigt <<doctoolchain-overview>>. Ausführliche Beschreibungen finden Sie in der https://doctoolchain.github.io/docToolchain[Dokumentation].
@@ -84,7 +84,7 @@ Eine Übersicht über alle zur Zeit vorhandenen Tasks zeigt <<doctoolchain-overv
 image::ea/manual/Overview2.png[]
 
 Was aber, wenn nicht der richtige, von Ihnen benötigte Task in docToolchain umgesetzt ist?
-Vielleicht verwenden Sie ja ein anderes Tool zum zeichnen Ihrer Diagramme?
+Vielleicht verwenden Sie ja ein anderes Tool zum Zeichnen Ihrer Diagramme?
 
 Wir wollen docToolchain nicht nur als Werkzeug verstanden wissen, sondern auch als Idee, was Sie mit Dokumentation alles machen können.
 
@@ -100,11 +100,11 @@ Lesen Sie doch einfach direkt die Daten aus der Quelle - der Datei in die Ihr We
 
 Dieser Ansatz ist nicht immer möglich, da nicht alle Dateiformate gut genug dokumentiert sind.
 Im Fall von MS Excel haben wir aber Glück.
-Sie finden in der Apache POI Bibliothek ein gutes Werkzeug um eine Excel-Datei direkt und ohne Umwege zu lesen.
+Sie finden in der Apache POI-Bibliothek ein gutes Werkzeug um eine Excel-Datei direkt und ohne Umwege zu lesen.
 
-In docToolchain wird dies genutzt damit Sie Tabellen einfacher pflegen können.
-Der Task https://doctoolchain.github.io/docToolchain/#_exportexcel[`exportExcel`] sucht nach allen Excel-Datein im Projekt, öffnet sie und konvertiert den Inhalt Arbeitsblatt für Arbeitsblatt nach AsciiDoc.
-Das Ergebnis includieren Sie einfach wieder in Ihre Dokumentation.
+In docToolchain wird dies genutzt, damit Sie Tabellen einfacher pflegen können.
+Der Task https://doctoolchain.github.io/docToolchain/#_exportexcel[`exportExcel`] sucht nach allen Excel-Dateien im Projekt, öffnet sie und konvertiert den Inhalt Arbeitsblatt für Arbeitsblatt nach AsciiDoc.
+Das Ergebnis inkludieren Sie einfach wieder in Ihre Dokumentation.
 
 === Versionierung
 
@@ -118,16 +118,15 @@ Dabei handelt es sich auch meist um compilierten Sourcecode und somit binäre Da
 Bezüglich der Ausgangsdateien stellt sich wohl niemand die Frage der Versionierung, solange es sich um Text-Dateien handelt.
 Da in diesen Dateien Ihre Arbeit steckt, werden sie selbstverständlich versioniert.
 
-Bei Verwendung des Docs-as-Code Ansatzes dreht sich das Blatt auf einmal - zumindest bezüglich der von Ihnen verwendeten Dokumentationstools.
+Bei Verwendung des Docs-as-Code-Ansatzes dreht sich das Blatt auf einmal - zumindest bezüglich der von Ihnen verwendeten Dokumentationstools.
 Die Ausgangsdateien sind meist binär, die exportierten Daten entweder Grafiken oder Texte.
 
 Die Erfahrung hat uns gezeigt, dass auch in diesem Fall die binären Ausgangsdateien einer Versionierung und somit eines Backups unterliegen sollten.
 Git kommt mit solchen Dateien ganz gut zurecht.
-Sollten Sie diese Dateien aber schon anderweitig verwalten, weil Sie z.B. Ihr UML Modell in der Datenbank speichern, dann ist das auch in Ordnung.
+Sollten Sie diese Dateien aber schon anderweitig verwalten, weil Sie z.B. Ihr UML-Modell in der Datenbank speichern, dann ist das auch in Ordnung.
 In diesem Fall sollte sich im Code-Repository jedoch ein klarer Hinweis auf die Quellen befinden.
 
-Bezüglich der exportierten Texte und Grafiken weichen wir vom Schema des Softwareentwicklers ab
-und nehmen auch diese generierten Artefakte unter Versionskontrolle.
+Bezüglich der exportierten Texte und Grafiken weichen wir vom Schema des Softwareentwicklers ab und nehmen auch diese generierten Artefakte unter Versionskontrolle.
 
 Das hat zwei entscheidende Vorteile.
 
@@ -143,7 +142,7 @@ Gerne stellen wir Ihnen auch noch vor, wie im Idealfall (aus Sicht Ihrer Werkzeu
 Stellen Sie sich ein flexibles Dateiformat vor, welches sich beim Referenzieren aus AsciiDoc wie eine Grafik verhält, beim Öffnen mit Ihrer Diagrammsoftware jedoch die Beschreibung des Diagramms als XML preisgibt, so dass Sie es einfach weiter (als Vektorgrafik!) bearbeiten können.
 
 Unmöglich?
-https://draw.io[Draw.io] speichert Meta-Daten im PNG-Format um genau diese Magie zu implementieren:
+https://draw.io[Draw.io] speichert Meta-Daten im PNG-Format, um genau diese Magie zu implementieren:
 Geben Sie einfach Ihrem Diagram von Anfang an die Dateiendung `.png` anstatt `.xml` und Draw.io kümmert sich um den Rest.
 Wir verwenden gerne die Endung `.dio.png` um auf einen Blick die ansonsten versteckten Meta-Daten zu erkennen.
 
@@ -158,7 +157,7 @@ java -jar plantuml.jar -metadata ihr-diagramm.png
 
 Hinweis: viele Programme (u.a. Paint.net) ignorieren die Meta-Daten in PNG-Dateien oder löschen sie sogar.
 Bearbeiten Sie die Diagramm-Datei mit einer solchen Software, könnten die Meta-Daten verloren gehen.
-Aber dafür haben Sie die Diagramme ja unter Versionkontrolle...
+Aber dafür haben Sie die Diagramme ja unter Versionskontrolle...
 
 == Ausgabeformate
 
@@ -186,7 +185,7 @@ Sie aktivieren das Plugin in Ihrem Build indem Sie eine Zeile hinzufügen:
 include::../../build.gradle[tags=pdf-plugin]
 ----
 
-Anschliessend sollten Sie den Asciidoctor-Task duplizieren.
+Anschließend sollten Sie den Asciidoctor-Task duplizieren.
 In Gradle ist es leicht möglich zwei getrennte Tasks zu erstellen, die beide vom Asciidoctor-Task "erben".
 Dies ermöglich es Ihnen für die Generierung von PDF andere Attribute zu setzen, als für die Generierung von HTML.
 
@@ -195,23 +194,23 @@ Dies ermöglich es Ihnen für die Generierung von PDF andere Attribute zu setzen
 include::../../build.gradle[tags=asciidoctor]
 ----
 
-Mit `.yaml`-basierten Styles können Sie anschliessend noch jedes Detail des PDFs konfigurieren.
+Mit `.yaml`-basierten Styles können Sie anschließend noch jedes Detail des PDFs konfigurieren.
 Der https://github.com/asciidoctor/asciidoctor-pdf/blob/master/docs/theming-guide.adoc[PDF-Theming-Guide] ist Ihnen dabei behilflich.
-So haben Sie für die PDF-Ausgabe kontrolle über Formatierungen, die nur bei seitenorientierten Formaten sinn machen,
-wie z.B. unterschiedliche Fusszeilen für linke und rechte Seite.
+So haben Sie für die PDF-Ausgabe Kontrolle über Formatierungen, die nur bei seitenorientierten Formaten Sinn machen,
+wie z.B. unterschiedliche Fußzeilen für linke und rechte Seite.
 
-Einige umfangreiche Beispiele für die Generierung von pdf aus AsciiDoc finden Sie auf dem https://github.com/isaqb-org[Github-Account] des iSAQB, etwa beim https://github.com/isaqb-org/curriculum-template[Foundation-Lehrplan].
+Einige umfangreiche Beispiele für die Generierung von PDF aus AsciiDoc finden Sie auf dem https://github.com/isaqb-org[Github-Account] des iSAQB, etwa beim https://github.com/isaqb-org/curriculum-template[Foundation-Lehrplan].
 
 === DOCX
 
-Möchten Sie Ihre Dokumentation im https://en.wikipedia.org/wiki/Office_Open_XML[Office Open XML] DOCX Format erstellen, so dass sie z.B. mit MS-Word gelesen werden kann, so ist ein Zwischenschritt notwendig.
+Möchten Sie Ihre Dokumentation im https://en.wikipedia.org/wiki/Office_Open_XML[Office Open XML] DOCX-Format erstellen, so dass sie z.B. mit MS-Word gelesen werden kann, so ist ein Zwischenschritt notwendig.
 
 AsciiDoc bzw. Asciidoctor ist mit dem docBook-Format im Hinterkopf entwickelt worden und Asciidoctor unterstützt docBook als internes Backend.
-Sie können also davon ausgehen, dass alle Formatierungen beim Erstellen Ihrer Dokumentation sich auch in der docBook Ausgabe von Asciidoctor wiederfinden.
+Sie können also davon ausgehen, dass alle Formatierungen beim Erstellen Ihrer Dokumentation sich auch in der docBook-Ausgabe von Asciidoctor wiederfinden.
 
-Dies nutzen wir und wandeln mit Hife von https://pandoc.org/[Pandoc] (dem Schweizer Taschenmesser der Formatkonvertierung) anschliessend das docBook-Format weiter in DOCX oder auch ePUB.
+Dies nutzen wir und wandeln mit Hilfe von https://pandoc.org/[Pandoc] (dem Schweizer Taschenmesser der Formatkonvertierung) anschließend das docBook-Format weiter in DOCX oder auch ePUB.
 
-Dazu benötigen Sie eine funktionsfähige Installation von Pandoc - insbesondere muss das `pandoc` Tool per Kommandozeile ausführbar sein.
+Dazu benötigen Sie eine funktionsfähige Installation von Pandoc - insbesondere muss das `pandoc`-Tool per Kommandozeile ausführbar sein.
 
 === Confluence
 
@@ -219,10 +218,10 @@ Für den Export Ihrer Dokumentation aus anderen Werkzeugen haben wir Ihnen oben 
 
 Auch in Bezug auf Ausgabeformate gibt es weitere Ansätze.
 
-Confluence, als ein bekannter Vertreter eines Wikis, ist ein web-basiertes Werkzeug und verfügt über eine REST API.
+Confluence, als ein bekannter Vertreter eines Wikis, ist ein web-basiertes Werkzeug und verfügt über eine REST-API.
 Es nutzt einen XHTML-Dialekt als internes Speicherformat.
 
-Was liegt also näher, als die AsciiDoc Dokumentation zuerst nach HTML5 (das ist von Natur aus xHTML konform) zu wandeln, per Gradle Tasks ein wenig zu transformieren und dann per REST-API nach Confluence zu übertragen?
+Was liegt also näher, als die AsciiDoc-Dokumentation zuerst nach HTML5 (das ist von Natur aus XHTML-konform) zu wandeln, per Gradle-Tasks ein wenig zu transformieren und dann per REST-API nach Confluence zu übertragen?
 
 Die Transformation ermöglichte es Ihnen die Ausgabe an die Zielumgebung anzupassen.
 Während in HTML eine einzige große Seite sich als praktisch erweist, konvertieren wir mit docToolchain die Seite für Confluence entsprechend der Überschriften in mehrere kleinere Seiten.
@@ -234,12 +233,12 @@ image::confluence.png[]
 
 == Fazit
 
-Nachdem wir Ihnen im https://www.informatik-aktuell.de/management-und-recht/projektmanagement/docs-as-code-die-grundlagen.html[ersten Artikel] unserer Docs-as-Code Reihe zeigten, wie Sie mit AsciiDoc und https://arc42.org[arc42] den Docs-as-Code Ansatz für Ihre Architekturdokumentation umsetzen können, haben wir Ihnen in dieser Folge einen Einblick gegeben, wie Sie aus diesem Ansatz noch mehr machen können, indem Sie weitere Schritte der Dokumentationserstellung in Ihren Build integrieren.
+Nachdem wir Ihnen im https://www.informatik-aktuell.de/management-und-recht/projektmanagement/docs-as-code-die-grundlagen.html[ersten Artikel] unserer Docs-as-Code-Reihe zeigten, wie Sie mit AsciiDoc und https://arc42.org[arc42] den Docs-as-Code-Ansatz für Ihre Architekturdokumentation umsetzen können, haben wir Ihnen in dieser Folge einen Einblick gegeben, wie Sie aus diesem Ansatz noch mehr machen können, indem Sie weitere Schritte der Dokumentationserstellung in Ihren Build integrieren.
 
-Das Open-Source Tool docToolchain unterstützt Sie dabei und bietet die oben genannten Build-Schritte als vorgefertigte Tasks.
+Das Open-Source-Tool docToolchain unterstützt Sie dabei und bietet die oben genannten Build-Schritte als vorgefertigte Tasks.
 
-In der nächten Folge zeigen wir Ihnen, wie Sie verschiedene Dokumentationsartefakte zu einer Website zusammenführen und somit alles unter ein Dach bringen.
+In der nächsten Folge zeigen wir Ihnen, wie Sie verschiedene Dokumentationsartefakte zu einer Website zusammenführen und somit alles unter ein Dach bringen.
 
-Noch mehr Informationen finden Sie in der Zwischenzeit auch auf https://docs-as-co.de[Docs-as-Co.de], diesen Artikel als Docs-as-Code Version auf https://github.com/docToolchain/ia-artikel-folge-2[github.com/docToolchain] und die Dokumentation von docToolchain auf https://doctoolchain.github.io/docToolchain/[doctoolchain.github.io].
+Noch mehr Informationen finden Sie in der Zwischenzeit auch auf https://docs-as-co.de[Docs-as-Co.de], diesen Artikel als Docs-as-Code-Version auf https://github.com/docToolchain/ia-artikel-folge-2[github.com/docToolchain] und die Dokumentation von docToolchain auf https://doctoolchain.github.io/docToolchain/[doctoolchain.github.io].
 
 In diesem Sinne viel Erfolg mit Docs-as-Code.
