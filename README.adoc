@@ -22,7 +22,7 @@ Wir möchten Dokumentation in der Softwareentwicklung von vielerlei typischen Sc
 * https://gradle.org/install[Gradle] installiert zu haben, hilft ungemein... Wir bevorzugen die Installation über http://sdkman.io/[sdkman], den großartigen Package-Manager.
 * Eine Shell/Kommandozeile/Terminal.
 
-Alternativ können Sie das Repository auch in gitpod.io öffnen, dann startet eine web basierte Entwicklungsumgebung:
+Alternativ können Sie das Repository auch in gitpod.io öffnen, dann startet eine web-basierte Entwicklungsumgebung:
 
 image:https://gitpod.io/button/open-in-gitpod.svg[link="https://gitpod.io#https://github.com/docToolchain/ia-artikel-folge-2", title="In Gitpod öffnen"]
 
@@ -60,7 +60,7 @@ EA wird headless gestartet und das Architektur-Diagramm aus dem Artikel neu expo
 
     ./gradlew exportEA generatePDF
 
-aus.
+auf.
 Und schon sind Ihre Änderungen im aktuellen PDF!
 
 Sollten Sie den EA nicht auf Ihrem System haben, werden Sie die Entscheidung zu schätzen wissen, dass die exportierten Diagramme unter Versionkontrolle stehen und Sie dennoch die Dokumentation generieren können...
